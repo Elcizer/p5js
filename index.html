@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -141,7 +140,7 @@
 
     /* iframe preview — 항상 보임 */
     .cell-preview {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       position: relative;
       overflow: hidden;
       background: var(--surface2);
@@ -151,8 +150,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 600px;
-      height: 337px;
+      width: 800px;
+      height: 600px;
       border: none;
       transform-origin: top left;
       pointer-events: none;
@@ -368,7 +367,7 @@
       if (!iframe) return;
       const w = preview.clientWidth;
       const h = preview.clientHeight;
-      const scale = Math.min(w / 600, h / 337);
+      const scale = Math.min(w / 800, h / 600);
       iframe.style.transform = `scale(${scale})`;
     });
   }
