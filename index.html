@@ -17,11 +17,8 @@
       --text-primary: #f0ede6;
       --text-muted: #7a7773;
       --accent: #c8b89a;
-      --accent-glow: rgba(200,184,154,0.12);
       --label-1: #e8b89a;
       --label-2: #a8c4b8;
-      --label-3: #b8a8c4;
-      --label-4: #c4b8a8;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +31,6 @@
       overflow-x: hidden;
     }
 
-    /* Grain overlay */
     body::before {
       content: '';
       position: fixed;
@@ -45,12 +41,10 @@
       opacity: 0.6;
     }
 
-    /* Header */
     header {
       padding: 64px 48px 0;
       max-width: 1100px;
       margin: 0 auto;
-      position: relative;
     }
 
     .eyebrow {
@@ -80,7 +74,6 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--text-primary);
-      margin-bottom: 8px;
     }
 
     h1 em {
@@ -96,7 +89,6 @@
       max-width: 480px;
     }
 
-    /* Divider */
     .divider {
       max-width: 1100px;
       margin: 40px auto 0;
@@ -104,7 +96,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Grid */
     .grid-section {
       max-width: 1100px;
       margin: 0 auto;
@@ -138,8 +129,6 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      position: relative;
-      cursor: pointer;
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -149,7 +138,7 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
-    /* Preview area */
+    /* iframe preview — 항상 보임 */
     .cell-preview {
       aspect-ratio: 16 / 9;
       position: relative;
@@ -168,48 +157,16 @@
       pointer-events: none;
     }
 
-    /* Overlay on hover */
-    .cell-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(13, 13, 13, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .cell:hover .cell-overlay {
-      opacity: 1;
-    }
-
-    .open-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-primary);
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 10px 22px;
-      border-radius: 40px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .open-btn:hover { background: rgba(255,255,255,0.18); }
-
-    /* Card meta */
+    /* 카드 하단 메타 */
     .cell-meta {
-      padding: 16px 20px 18px;
+      padding: 14px 18px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border);
     }
 
-    .cell-info { display: flex; flex-direction: column; gap: 4px; }
+    .cell-info { display: flex; flex-direction: column; gap: 3px; }
 
     .cell-number {
       font-family: 'Space Mono', monospace;
@@ -219,16 +176,23 @@
     }
 
     .cell-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-primary);
+    }
+
+    .cell-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
     }
 
     .cell-tag {
       font-family: 'Space Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.08em;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 20px;
       border: 1px solid;
     }
@@ -245,7 +209,17 @@
       background: rgba(168,196,184,0.06);
     }
 
-    /* Footer */
+    .open-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .open-link:hover { color: var(--text-primary); }
+
     footer {
       border-top: 1px solid var(--border);
       padding: 24px 48px;
@@ -263,23 +237,11 @@
       letter-spacing: 0.08em;
     }
 
-    .footer-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .footer-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      opacity: 0.4;
-    }
-
+    .footer-dots { display: flex; gap: 6px; }
+    .footer-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--text-muted); opacity: 0.4; }
     .footer-dot:nth-child(2) { opacity: 0.6; }
     .footer-dot:nth-child(3) { opacity: 0.9; background: var(--accent); }
 
-    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -288,13 +250,11 @@
     header { animation: fadeUp 0.6s ease both; }
     .divider { animation: fadeUp 0.6s 0.1s ease both; }
     .grid-section { animation: fadeUp 0.6s 0.2s ease both; }
-
     .cell:nth-child(1) { animation: fadeUp 0.5s 0.25s ease both; }
     .cell:nth-child(2) { animation: fadeUp 0.5s 0.35s ease both; }
     .cell:nth-child(3) { animation: fadeUp 0.5s 0.45s ease both; }
     .cell:nth-child(4) { animation: fadeUp 0.5s 0.55s ease both; }
 
-    /* Responsive */
     @media (max-width: 640px) {
       header, .divider, .grid-section, footer { padding-left: 24px; padding-right: 24px; }
       #projects { grid-template-columns: 1fr; }
@@ -306,7 +266,7 @@
 
 <header>
   <p class="eyebrow">p5.js Creative Coding</p>
-  <h1>나의 <em>작품들</em></h1>
+  <h1>나의 작품들</h1>
   <p class="subtitle">과제 1~4 작품 모음집. 정적 그래픽부터 인터랙티브 애니메이션까지.</p>
 </header>
 
@@ -320,69 +280,67 @@
 
   <main id="projects">
 
-    <!-- Row 1: 과제1 (static) | 과제4 (dynamic) -->
-    <div class="cell" onclick="window.open('sample1/index.html','_blank')">
+    <div class="cell">
       <div class="cell-preview">
         <iframe src="sample1/index.html" loading="lazy" title="과제 1"></iframe>
-        <div class="cell-overlay">
-          <a class="open-btn" href="sample1/index.html" target="_blank" onclick="event.stopPropagation()">열기 →</a>
-        </div>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
           <span class="cell-number">ASSIGNMENT 01</span>
           <span class="cell-title">과제 1</span>
         </div>
-        <span class="cell-tag tag-static">static</span>
+        <div class="cell-right">
+          <span class="cell-tag tag-static">static</span>
+          <a class="open-link" href="sample1/index.html" target="_blank">전체화면 →</a>
+        </div>
       </div>
     </div>
 
-    <div class="cell" onclick="window.open('sample4/index.html','_blank')">
+    <div class="cell">
       <div class="cell-preview">
         <iframe src="sample4/index.html" loading="lazy" title="과제 4"></iframe>
-        <div class="cell-overlay">
-          <a class="open-btn" href="sample4/index.html" target="_blank" onclick="event.stopPropagation()">열기 →</a>
-        </div>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
           <span class="cell-number">ASSIGNMENT 04</span>
           <span class="cell-title">과제 4</span>
         </div>
-        <span class="cell-tag tag-dynamic">dynamic</span>
+        <div class="cell-right">
+          <span class="cell-tag tag-dynamic">dynamic</span>
+          <a class="open-link" href="sample4/index.html" target="_blank">전체화면 →</a>
+        </div>
       </div>
     </div>
 
-    <!-- Row 2: 과제2 (static) | 과제3 (dynamic) -->
-    <div class="cell" onclick="window.open('sample2/index.html','_blank')">
+    <div class="cell">
       <div class="cell-preview">
         <iframe src="sample2/index.html" loading="lazy" title="과제 2"></iframe>
-        <div class="cell-overlay">
-          <a class="open-btn" href="sample2/index.html" target="_blank" onclick="event.stopPropagation()">열기 →</a>
-        </div>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
           <span class="cell-number">ASSIGNMENT 02</span>
           <span class="cell-title">과제 2</span>
         </div>
-        <span class="cell-tag tag-static">static</span>
+        <div class="cell-right">
+          <span class="cell-tag tag-static">static</span>
+          <a class="open-link" href="sample2/index.html" target="_blank">전체화면 →</a>
+        </div>
       </div>
     </div>
 
-    <div class="cell" onclick="window.open('sample3/index.html','_blank')">
+    <div class="cell">
       <div class="cell-preview">
         <iframe src="sample3/index.html" loading="lazy" title="과제 3"></iframe>
-        <div class="cell-overlay">
-          <a class="open-btn" href="sample3/index.html" target="_blank" onclick="event.stopPropagation()">열기 →</a>
-        </div>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
           <span class="cell-number">ASSIGNMENT 03</span>
           <span class="cell-title">과제 3</span>
         </div>
-        <span class="cell-tag tag-dynamic">dynamic</span>
+        <div class="cell-right">
+          <span class="cell-tag tag-dynamic">dynamic</span>
+          <a class="open-link" href="sample3/index.html" target="_blank">전체화면 →</a>
+        </div>
       </div>
     </div>
 
@@ -399,19 +357,14 @@
 </footer>
 
 <script>
-  // Scale iframes to fit preview box
   function scaleIframes() {
     document.querySelectorAll('.cell-preview').forEach(preview => {
       const iframe = preview.querySelector('iframe');
       if (!iframe) return;
       const w = preview.clientWidth;
       const h = preview.clientHeight;
-      const scaleX = w / 600;
-      const scaleY = h / 337;
-      const scale = Math.min(scaleX, scaleY);
+      const scale = Math.min(w / 600, h / 337);
       iframe.style.transform = `scale(${scale})`;
-      iframe.style.width = '600px';
-      iframe.style.height = '337px';
     });
   }
   window.addEventListener('load', scaleIframes);
