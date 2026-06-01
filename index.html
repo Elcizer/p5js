@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -157,6 +158,10 @@
       pointer-events: none;
     }
 
+    .cell-preview iframe.interactive {
+      pointer-events: auto;
+    }
+
     /* 카드 하단 메타 */
     .cell-meta {
       padding: 14px 18px 16px;
@@ -298,7 +303,7 @@
 
     <div class="cell">
       <div class="cell-preview">
-        <iframe src="sample4/index.html" loading="lazy" title="과제 4"></iframe>
+        <iframe src="sample4/index.html" loading="lazy" title="과제 4" class="interactive"></iframe>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
@@ -330,7 +335,7 @@
 
     <div class="cell">
       <div class="cell-preview">
-        <iframe src="sample3/index.html" loading="lazy" title="과제 3"></iframe>
+        <iframe src="sample3/index.html" loading="lazy" title="과제 3" class="interactive"></iframe>
       </div>
       <div class="cell-meta">
         <div class="cell-info">
