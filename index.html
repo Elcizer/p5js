@@ -367,7 +367,7 @@
       if (!iframe) return;
       const w = preview.clientWidth;
       const h = preview.clientHeight;
-      const scale = Math.min(w / 800, h / 600);
+      const scale = Math.min(w / 600, h / 400);
       iframe.style.transform = `scale(${scale})`;
     });
   }
